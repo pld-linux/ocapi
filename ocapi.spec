@@ -11,6 +11,7 @@ License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.opendap.org/pub/OCAPI/source/%{name}-%{version}.tar.gz
 # Source0-md5:	c1a4f9391d7f88b0f9e93bfcb9c5181f
+Patch0:		%{name}-libdir.patch
 URL:		http://opendap.org/ocapi/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -70,6 +71,7 @@ Statyczna biblioteka OCAPI.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}

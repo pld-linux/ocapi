@@ -1,0 +1,11 @@
+--- ocapi-1.4.3/ocapi-config.in.orig	2006-01-31 11:43:18.000000000 +0100
++++ ocapi-1.4.3/ocapi-config.in	2014-03-15 15:47:52.166721968 +0100
+@@ -4,7 +4,7 @@
+ #
+ prefix=@prefix@
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
++libdir=@libdir@
+ includedir=${prefix}/include
+ 
+ usage()
