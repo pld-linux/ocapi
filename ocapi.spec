@@ -6,18 +6,20 @@ Summary:	The OPeNDAP C DAP2 library (client-side only)
 Summary(pl.UTF-8):	Biblioteka OPeNDAP DAP2 dla C (tylko strona kliencka)
 Name:		ocapi
 Version:	1.4.3
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.opendap.org/pub/OCAPI/source/%{name}-%{version}.tar.gz
 # Source0-md5:	c1a4f9391d7f88b0f9e93bfcb9c5181f
 Patch0:		%{name}-libdir.patch
+Patch1:		%{name}-curl.patch
 URL:		http://opendap.org/ocapi/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	curl-devel >= 7.10.6
+BuildRequires:	libtirpc-devel
 BuildRequires:	libtool
 BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
@@ -50,6 +52,9 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki OCAPI
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	curl-devel >= 7.10.6
+Requires:	libtirpc-devel
+Requires:	ncurses-devel
+Requires:	readline-devel
 
 %description devel
 Header files for OCAPI library.
@@ -72,6 +77,7 @@ Statyczna biblioteka OCAPI.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -79,7 +85,9 @@ Statyczna biblioteka OCAPI.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	CPPFLAGS="%{rpmcppflags} -I/usr/include/tirpc" \
+	LIBS="-ltirpc"
 %{__make}
 
 %{?with_tests:%{__make} check}

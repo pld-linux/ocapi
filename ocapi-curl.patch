@@ -1,0 +1,13 @@
+--- ocapi-1.4.3/http.c.orig	2009-01-28 00:57:36.000000000 +0100
++++ ocapi-1.4.3/http.c	2020-11-26 16:46:20.551788109 +0100
+@@ -862,8 +862,10 @@
+ 		return "problem with the local client certificate";
+ 	case CURLE_SSL_CIPHER:
+ 		return "specified cipher unusable";
++#if CURLE_SSL_CACERT != CURLE_PEER_FAILED_VERIFICATION
+ 	case CURLE_SSL_CACERT:
+ 		return "problem with the CA cert (path? access rights?)";
++#endif
+ 	case CURLE_BAD_CONTENT_ENCODING:
+ 		return "Unrecognized transfer encoding";
+ 
