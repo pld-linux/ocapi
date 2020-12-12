@@ -1,0 +1,11 @@
+--- ocapi-1.4.3/buffers.c.orig	2008-11-21 00:02:33.000000000 +0100
++++ ocapi-1.4.3/buffers.c	2020-12-12 09:36:57.862253188 +0100
+@@ -594,7 +594,7 @@
+ {
+     StringBuffer *sb = sbNew(NULL);
+     sbAppend(sb, "123456789\n");
+-    printf(sb->sContent);
++    fputs(sb->sContent, stdout);
+     sbInsert_at(sb, "abc", 0);
+     printf("abc at 0: %s\n", sb->sContent);
+     sbInsert_at(sb, "def", 10);

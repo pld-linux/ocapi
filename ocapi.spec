@@ -6,13 +6,15 @@ Summary:	The OPeNDAP C DAP2 library (client-side only)
 Summary(pl.UTF-8):	Biblioteka OPeNDAP DAP2 dla C (tylko strona kliencka)
 Name:		ocapi
 Version:	1.4.3
-Release:	2
+Release:	3
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.opendap.org/pub/OCAPI/source/%{name}-%{version}.tar.gz
 # Source0-md5:	c1a4f9391d7f88b0f9e93bfcb9c5181f
 Patch0:		%{name}-libdir.patch
 Patch1:		%{name}-curl.patch
+Patch2:		%{name}-opt.patch
+Patch3:		%{name}-format.patch
 URL:		http://opendap.org/ocapi/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -78,6 +80,8 @@ Statyczna biblioteka OCAPI.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 %{__libtoolize}

@@ -1,0 +1,13 @@
+--- ocapi-1.4.3/Makefile.am.orig	2009-04-22 23:19:38.000000000 +0200
++++ ocapi-1.4.3/Makefile.am	2020-12-12 09:32:04.277177008 +0100
+@@ -29,9 +29,7 @@
+ AM_YFLAGS = --defines --verbose --debug
+ AM_LFLAGS = -8
+ AM_CPPFLAGS = -I$(top_srcdir)
+-AM_CFLAGS = -g3 -O0 -Wall -W
+-#added the following line to enforce the AM_CFLAGS value set above--more for debugging purposes
+-CFLAGS =
++AM_CFLAGS = -Wall -W
+ 
+ # These are not used by automake but are often useful for certain types of
+ # debugging. The best way to use these is to run configure as:
